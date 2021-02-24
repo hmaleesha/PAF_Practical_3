@@ -78,7 +78,7 @@ public class Item {
 			}
 			 // Prepare the html table to be displayed
 		
-			 output = "<table border=‘1’><tr><th>Item Code</th>"
+			 output = "<table border='1'><tr><th>Item Code</th>"
 			  +"<th>Item Name</th><th>Item Price</th>"
 			  + "<th>Item Description</th>"
 			  + "<th>Update</th><th>Remove</th></tr>";
@@ -104,7 +104,7 @@ public class Item {
 				 // buttons
 				 output += "<td><input name='btnUpdate' "
 				 + " type='button' value='Update'></td>"
-				 + "<td><form method=‘post’ action=‘items.jsp’>"
+				 + "<td><form method='post' action='items.jsp'>"
 				 + "<input name='btnRemove' "
 				 + " type='submit' value='Remove'>"
 				 + "<input name='itemID' type='hidden' "
