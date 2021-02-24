@@ -39,7 +39,7 @@ public class Item {
 			
 		}
 		
-		String query = "insert into items ('itemID','itemCode','itemName','itemPrice','itemDesc')"+" values(?,?,?,?,?)";
+		String query = "insert into items(itemID,itemCode,itemName,itemPrice,itemDesc)"+" values(?,?,?,?,?)";
 		
 		PreparedStatement preparedStmt = con.prepareStatement(query);
 		
@@ -102,13 +102,13 @@ public class Item {
 				
 				output += "<td>" + itemDesc + "</td>";
 				 // buttons
-				 output += "<td><input name=‘btnUpdate’ "
-				 + " type=‘button’ value=‘Update’></td>"
+				 output += "<td><input name='btnUpdate' "
+				 + " type='button' value='Update'></td>"
 				 + "<td><form method=‘post’ action=‘items.jsp’>"
-				 + "<input name=‘btnRemove’ "
-				 + " type=‘submit’ value=‘Remove’>"
-				 + "<input name=‘itemID’ type=‘hidden’ "
-				 + " value=‘" + itemID + "‘>" + "</form></td></tr>";
+				 + "<input name='btnRemove' "
+				 + " type='submit' value='Remove'>"
+				 + "<input name='itemID' type='hidden' "
+				 + " value='" + itemID + "'>" + "</form></td></tr>";
 			 	}
 			 con.close();
 			 // Complete the html table
