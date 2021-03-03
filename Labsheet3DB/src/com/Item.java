@@ -103,10 +103,10 @@ public class Item {
 				output += "<td>" + itemDesc + "</td>";
 				 // buttons
 				 output += "<td><input name='btnUpdate' "
-				 + " type='button' value='Update'></td>"
+				 + " type='button' value='Update' class = 'btn btn-secondary'></td>"
 				 + "<td><form method='post' action='items.jsp'>"
-				 + "<input name='btnRemove' "
-				 + " type='submit' value='Remove'>"
+				 + "<input name='btnRemove'"
+				 + " type='submit' value='Remove' class = 'btn btn-danger'>"
 				 + "<input name='itemID' type='hidden' "
 				 + " value='" + itemID + "'>" + "</form></td></tr>";
 			 	}
@@ -151,4 +151,6 @@ public class Item {
 		}
 		return output;
 	}
+	
+	
 }
