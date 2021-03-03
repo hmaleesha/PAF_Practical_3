@@ -102,8 +102,14 @@ public class Item {
 				
 				output += "<td>" + itemDesc + "</td>";
 				 // buttons
-				 output += "<td><input name='btnUpdate' "
-				 + " type='button' value='Update' class = 'btn btn-secondary'></td>"
+				 output += "<td><form method='post' action='update.jsp'><input name='btnUpdate' "
+				 + " type='submit' value='Update' class = 'btn btn-secondary'><input name='itemID' type='hidden'" 
+				 + " value='" + itemID + "'>" 
+				 +" <input name='itemCode' type='hidden' value='" + itemCode + "'>"
+				 +" <input name='itemName' type='hidden' value='" + itemName+ "'>"
+				 +" <input name='itemPrice' type='hidden' value='" + itemPrice + "'>"
+				 +" <input name='itemDesc' type='hidden' value='" + itemDesc + "'>"
+				 + "</form></td>"
 				 + "<td><form method='post' action='items.jsp'>"
 				 + "<input name='btnRemove'"
 				 + " type='submit' value='Remove' class = 'btn btn-danger'>"
@@ -147,6 +153,40 @@ public class Item {
 		}
 		catch(Exception e) {
 			output = "Error while deleting the item";
+			System.err.println(e.getMessage());
+		}
+		return output;
+	}
+	
+public String updateItem(String itemID,String code,String name, String price,String desc) {
+		
+		String output = "";
+		
+		try {
+			
+			Connection con = connect();
+			if(con == null) {
+				return "Error while connecting to the database for update.";
+			}
+			
+			String query = "update items set itemCode = ?,itemName = ?,itemPrice = ?,itemDesc = ? where itemID = ?";
+			
+			PreparedStatement preparedStmt = con.prepareStatement(query);
+			
+			
+			preparedStmt.setString(1, code);
+			preparedStmt.setString(2, name);
+			preparedStmt.setDouble(3, Double.parseDouble(price));
+			preparedStmt.setString(4, desc);
+			preparedStmt.setInt(5, Integer.parseInt(itemID));
+			
+			preparedStmt.execute();
+			con.close();
+			
+			output = "Updated successfully";
+		}
+		catch(Exception e) {
+			output = "Error while updating the item";
 			System.err.println(e.getMessage());
 		}
 		return output;

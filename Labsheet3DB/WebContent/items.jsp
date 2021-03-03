@@ -4,15 +4,15 @@
    
 <%
  //Insert item----------------------------------
-if (request.getParameter("itemCode") != null)
- {
- Item itemObj = new Item();
- String stsMsg = itemObj.insertItem(request.getParameter("itemCode"),
- request.getParameter("itemName"),
- request.getParameter("itemPrice"),
- request.getParameter("itemDesc"));
- session.setAttribute("statusMsg", stsMsg);
- }
+	if (request.getParameter("itemCode") != null)
+	 {
+		 Item itemObj = new Item();
+		 String stsMsg = itemObj.insertItem(request.getParameter("itemCode"),
+		 request.getParameter("itemName"),
+		 request.getParameter("itemPrice"),
+		 request.getParameter("itemDesc"));
+		 session.setAttribute("statusMsg", stsMsg);
+	 }
  
  if(request.getParameter("itemID") != null){
 	 
@@ -20,6 +20,9 @@ if (request.getParameter("itemCode") != null)
 	 String stsMsg = itemObj.deleteItem(request.getParameter("itemID"));
 	 session.setAttribute("statusMsg", stsMsg);
  }
+
+
+ 
 
 %>
 
@@ -45,6 +48,7 @@ if (request.getParameter("itemCode") != null)
 			<div class = "alert alert-success">
 				<%
 				 out.print(session.getAttribute("statusMsg"));
+				
 				%>
 			</div>
 			<br>
