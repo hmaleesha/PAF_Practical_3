@@ -122,4 +122,33 @@ public class Item {
 		
 			return output;
 	}
+	
+	public String deleteItem(String itemID) {
+		
+		String output = "";
+		
+		try {
+			
+			Connection con = connect();
+			if(con == null) {
+				return "Error while connecting to the database for deleting.";
+			}
+			
+			String query = "delete from items where itemID = ?";
+			
+			PreparedStatement preparedStmt = con.prepareStatement(query);
+			
+			preparedStmt.setInt(1, Integer.parseInt(itemID));
+			
+			preparedStmt.execute();
+			con.close();
+			
+			output = "Deleted successfully";
+		}
+		catch(Exception e) {
+			output = "Error while deleting the item";
+			System.err.println(e.getMessage());
+		}
+		return output;
+	}
 }
